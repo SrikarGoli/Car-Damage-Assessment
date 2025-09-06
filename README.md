@@ -118,19 +118,7 @@ Open [http://localhost:8080](http://localhost:8080) in your browser
 
 ---
 
-## 📖 **Demo**
 
-<div align="center">
-
-### **Upload → Analyze → Results**
-
-<img src="https://via.placeholder.com/800x400/4ECDC4/FFFFFF?text=Demo+Screenshot" alt="Application Demo" width="80%">
-
-*Upload any car image and get instant AI-powered damage assessment*
-
-</div>
-
----
 
 ## 🏗️ **Architecture**
 
