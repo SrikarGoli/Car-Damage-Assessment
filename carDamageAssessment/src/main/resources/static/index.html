@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🚗 Car Damage Assessment - AI-Powered Analysis</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <i class="fas fa-car-crash header-icon"></i>
+        <div class="header-text">
+          <h1>AI Car Damage Assessment</h1>
+          <p>Advanced deep learning analysis for accurate damage evaluation</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="upload-section">
+        <div class="upload-card">
+          <div class="card-header">
+            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+            <h2>Upload Car Image</h2>
+            <p>Drag & drop or click to select a clear image of the damaged vehicle</p>
+          </div>
+
+          <form id="damageForm" enctype="multipart/form-data">
+            <div class="upload-area" id="uploadArea">
+              <div class="upload-content">
+                <i class="fas fa-images upload-area-icon"></i>
+                <div class="upload-text">
+                  <span class="primary-text">Choose an image or drag it here</span>
+                  <span class="secondary-text">PNG, JPG, JPEG up to 10MB</span>
+                </div>
+                <button type="button" class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                  <i class="fas fa-folder-open"></i> Browse Files
+                </button>
+              </div>
+              <input type="file" id="fileInput" name="file" accept="image/*" hidden />
+            </div>
+
+            <div class="file-info" id="fileInfo" style="display: none;">
+              <div class="file-preview">
+                <img id="filePreview" alt="Selected file" />
+                <div class="file-details">
+                  <span id="fileName"></span>
+                  <span id="fileSize"></span>
+                </div>
+                <button type="button" class="remove-file" onclick="clearFile()">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="analyze-btn" id="analyzeBtn">
+              <i class="fas fa-search"></i>
+              <span>Analyze Damage</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-section" id="loadingSection" style="display: none;">
+        <div class="loading-card">
+          <div class="loading-animation">
+            <div class="loading-spinner"></div>
+            <div class="ai-brain">
+              <i class="fas fa-brain"></i>
+            </div>
+          </div>
+          <h3>AI Analysis in Progress</h3>
+          <p>Our deep learning model is analyzing your image...</p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="loading-steps">
+            <div class="step active" id="step1">
+              <i class="fas fa-check"></i>
+              <span>Preprocessing image</span>
+            </div>
+            <div class="step" id="step2">
+              <i class="fas fa-brain"></i>
+              <span>Running AI analysis</span>
+            </div>
+            <div class="step" id="step3">
+              <i class="fas fa-chart-bar"></i>
+              <span>Generating assessment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-section" id="resultsSection" style="display: none;">
+        <div class="results-card">
+          <div class="results-header">
+            <i class="fas fa-clipboard-check results-icon"></i>
+            <h2>Assessment Complete</h2>
+          </div>
+
+          <div class="assessment-result" id="assessmentResult">
+            <div class="damage-level-card" id="damageLevelCard">
+              <div class="damage-icon">
+                <i class="fas fa-car" id="damageIcon"></i>
+              </div>
+              <div class="damage-info">
+                <h3 id="damageTitle">Damage Assessment</h3>
+                <div class="damage-badge" id="damageBadge">
+                  <span id="damageLevelText"></span>
+                </div>
+                <p id="damageDescription"></p>
+              </div>
+            </div>
+
+            <div class="confidence-meter">
+              <div class="confidence-header">
+                <span>AI Confidence</span>
+                <span id="confidencePercent">0%</span>
+              </div>
+              <div class="confidence-bar">
+                <div class="confidence-fill" id="confidenceFill"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="original-image">
+            <h4>Analyzed Image</h4>
+            <img id="resultImage" alt="Analyzed car damage" />
+          </div>
+
+          <div class="recommendations" id="recommendations">
+            <h4>Recommendations</h4>
+            <div class="recommendation-list" id="recommendationList"></div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="secondary-btn" onclick="resetForm()">
+              <i class="fas fa-redo"></i>
+              Analyze Another
+            </button>
+            <button class="primary-btn" onclick="downloadReport()">
+              <i class="fas fa-download"></i>
+              Download Report
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Section -->
+      <div class="error-section" id="errorSection" style="display: none;">
+        <div class="error-card">
+          <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <h3>Analysis Failed</h3>
+          <p id="errorMessage"></p>
+          <button class="retry-btn" onclick="resetForm()">
+            <i class="fas fa-redo"></i>
+            Try Again
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>Powered by TensorFlow & Spring Boot</p>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#help">Help</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
