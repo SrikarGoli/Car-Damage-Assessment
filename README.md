@@ -7,7 +7,6 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.19.0-orange.svg)](https://www.tensorflow.org/)
 [![Java](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.java.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 *Transform car damage assessment with cutting-edge AI technology*
 
@@ -384,7 +383,7 @@ Just include the original license notice!
 
 🐛 **Bug Reports**: [GitHub Issues](https://github.com/SrikarGoli/Car-Damage-Assessment/issues)  
 💡 **Feature Requests**: [GitHub Discussions](https://github.com/SrikarGoli/Car-Damage-Assessment/discussions)  
-📧 **Email**: srikar@example.com  
+📧 **Email**: srikargoli1@gmail.com  
 💬 **Discussions**: [GitHub Community](https://github.com/SrikarGoli/Car-Damage-Assessment/community)
 
 ---
