@@ -8,6 +8,8 @@
 *.css linguist-detectable=false
 *.ipynb linguist-detectable=false
 *.java linguist-detectable=true
-
+*.ps1 linguist-detectable=false
+*.bat linguist-detectable=false
+*.cmd linguist-detectable=false
 
 
